@@ -44,7 +44,7 @@ static const unsigned char PROGMEM str_2[] = {    //洲
 
 
 String str1;
-
+String str2;
 void setup() {
   Serial.begin(115200);
   Serial.println(F("DHT12 溫溼度實驗!"));
@@ -58,9 +58,12 @@ void setup() {
   //str1 = String(t, 2);
   tft.fillScreen(TFT_BLACK); // 用全黑清除螢幕
   tft.setTextColor(TFT_RED);
-  tft.setTextSize(1);                   //sets the size of text
   tft.loadFont(font48); //指定tft屏幕对象载入font字库
   tft.drawString("溫度:", 0, 0);
+
+  tft.setTextColor(TFT_RED);
+  tft.drawString("濕度:", 0, 60);
+    
   tft.unloadFont(); //释放字库文件,节省资源
 
   dht.begin();
@@ -107,6 +110,7 @@ void loop() {
 
   //TFT上顯示溫度
   str1 = String(t, 2);
+  str2 = String(h, 2);
   //  tft.fillScreen(TFT_BLACK); // 用全黑清除螢幕
   //  tft.setTextColor(TFT_RED);
   //  tft.setTextSize(1);                   //sets the size of text
@@ -115,13 +119,23 @@ void loop() {
   //  tft.unloadFont(); //释放字库文件,节省资源
 
   //文字 T-Display
-  tft.setTextColor(TFT_BLUE);
-  tft.setTextSize(2);
-  tft.loadFont(font48); //指定tft屏幕对象载入font字库
   tft.fillScreen(TFT_BLACK); // 用全黑清除螢幕
+  tft.setTextColor(TFT_BLUE);
+ 
+  tft.loadFont(font48); //指定tft屏幕对象载入font字库
+ 
   tft.setTextColor(TFT_RED);
   tft.drawString("溫度:", 0, 0);
   tft.setTextColor(TFT_BLUE);
-  tft.drawString(str1, 50, 50);
+  tft.drawString(str1, 110, 0);
+
+
+  tft.setTextColor(TFT_RED);
+  tft.drawString("濕度:", 0, 60);
+  tft.setTextColor(TFT_BLUE);
+  tft.drawString(str2, 110, 60);
+
+
+  
   tft.unloadFont(); //释放字库文件,节省资源
 }
