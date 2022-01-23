@@ -7,7 +7,7 @@
 #include <TFT_eSPI.h>        //LCD函式庫
 #include "DHT.h"
 #include "font.h"
-#define DHTPIN 12     // Digital pin connected to the DHT sensor
+#define DHTPIN 33     //這個腳位測試OK Digital pin connected to the DHT sensor
 // Feather HUZZAH ESP8266 note: use pins 3, 4, 5, 12, 13 or 14 --
 // Pin 15 can work but DHT must be disconnected during program upload.
 
