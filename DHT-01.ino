@@ -49,9 +49,6 @@ void setup() {
   Serial.begin(115200);
   Serial.println(F("DHT12 溫溼度實驗!"));
 
-  dht.begin();
-
-
   tft.begin();               // 初始化LCD
   tft.setRotation(1);  // landscape
   tft.fillScreen(TFT_BLACK); // 用全黑清除螢幕
@@ -65,6 +62,11 @@ void setup() {
   tft.loadFont(font48); //指定tft屏幕对象载入font字库
   tft.drawString("溫度:", 0, 0);
   tft.unloadFont(); //释放字库文件,节省资源
+
+  dht.begin();
+
+
+
 }
 
 void loop() {
@@ -113,12 +115,13 @@ void loop() {
   //  tft.unloadFont(); //释放字库文件,节省资源
 
   //文字 T-Display
-  tft.setFreeFont(&FreeSerifBold12pt7b);
-  tft.setCursor(30, 95, 4);
   tft.setTextColor(TFT_BLUE);
   tft.setTextSize(2);
-  //tft.printf(str1);
-   tft.loadFont(font48); //指定tft屏幕对象载入font字库
+  tft.loadFont(font48); //指定tft屏幕对象载入font字库
+  tft.fillScreen(TFT_BLACK); // 用全黑清除螢幕
+  tft.setTextColor(TFT_RED);
+  tft.drawString("溫度:", 0, 0);
+  tft.setTextColor(TFT_BLUE);
   tft.drawString(str1, 50, 50);
-  tft.unloadFont(); //释放字库文件,节省资源 
+  tft.unloadFont(); //释放字库文件,节省资源
 }
